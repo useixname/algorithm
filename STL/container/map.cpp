@@ -1,39 +1,45 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
-map<string,int>m;
-int n;
+const int N = 1e5 + 10;
+// 倒着分配。这样既能保证方案有效（保质期在），又能保证最优（最小）。
+struct node
+{
+	int a, b, c;
+	friend bool operator<(node x, node y)
+	{
+		return x.a > y.a;
+	}
+} a[N];
+bool comp(node x, node y) { return x.b > y.b; } // 按保质期从大到小排序
+int t, n;
+priority_queue<node> q; // 按单价
 int main()
 {
-	cout<<"请输入要添加的元素个数:";
-	cin>>n;
-	for(int i=0;i<n;i++){
-		string s;
-		int id;
-		cout<<"键：";
-		cin>>s;
-		cout<<"值：";
-		cin>>id;
-	    m[s]=id;
+	// 请在此输入您的代码
+	cin >> t >> n;
+	for (int i = 1; i <= n; i++)
+	{
+		cin >> a[i].a >> a[i].b >> a[i].c;
 	}
-	//第一种遍历输出
-	map<string,int>::iterator it;
-	//查找uuu
-	int ii=m.count("uuu"),tt=m.count("kkk");
-	if(ii==1){
-		cout<<"查找成功"<<endl;
+	sort(a + 1, a + n + 1, comp);
+	int j = 1;
+	long long ans = 0;
+	for (int i = t; i >= 1; i--)
+	{
+		while (j <= n && a[j].b >= i)
+			q.push(a[j++]);
+		if (q.empty())
+		{
+			cout << -1;
+			return 0;
+		}
+		node tmp = q.top();
+		q.pop();
+		ans += tmp.a;
+		tmp.c--;
+		if (tmp.c)
+			q.push(tmp);
 	}
-	else{
-		cout<<"查找失败"<<endl;
-	}
-	if(tt==1){
-		cout<<"查找成功"<<endl;
-	}
-	else{
-		cout<<"查找失败"<<endl;
-	}
-	cout<<"map中的键值对如下 :"<<endl;
-	for(it=m.begin();it!=m.end();it++){
-		cout<<"键="<<it->first<<" 值="<<it->second<<endl;
-	}
+	cout << ans;
 	return 0;
 }

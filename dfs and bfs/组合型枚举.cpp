@@ -3,7 +3,7 @@ using namespace std;
 
 const int N=35;
 int a[N],vis[N];
-int n,m;
+int n,m,cnt;
 
 void dfs(int u){
     if(u>=m){
