@@ -8,9 +8,15 @@ void msort(int l,int r){
     if(l==r) return;
     int m=l+r>>1;
 <<<<<<< HEAD
+<<<<<<< HEAD
     msort(l,m);msort(m+1,r);//虏冒路脰
 
     int i=l,j=m+1,k=l;//潞脧虏垄
+=======
+    msort(l,m);msort(m+1,r);//拆分
+
+    int i=l,j=m+1,k=l;//合并
+>>>>>>> 0e1218bc702cdab65f4d3ad81f62baa81bda875e
 =======
     msort(l,m);msort(m+1,r);//拆分
 

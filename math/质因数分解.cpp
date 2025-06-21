@@ -1,6 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 <<<<<<< HEAD:math/质因数分解.cpp
+<<<<<<< HEAD:math/质因数分解.cpp
 #define int long long  // ʹ�� long long ���ʹ�������
 int n;
 
@@ -29,6 +30,8 @@ signed main() {
     return 0;
 }
 =======
+=======
+>>>>>>> 0e1218bc702cdab65f4d3ad81f62baa81bda875e:shulun/质因数分解.cpp
 #define int long long
 int n;
 
@@ -51,5 +54,9 @@ signed main(){
     cin>>n;
     cout<<decompose(n);
     return 0;
+<<<<<<< HEAD:math/质因数分解.cpp
+}
+>>>>>>> 0e1218bc702cdab65f4d3ad81f62baa81bda875e:shulun/质因数分解.cpp
+=======
 }
 >>>>>>> 0e1218bc702cdab65f4d3ad81f62baa81bda875e:shulun/质因数分解.cpp

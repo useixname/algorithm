@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 // #include<cstdio>
 // #include<algorithm>
 // #define size 1000010
@@ -76,6 +77,8 @@ int main(){
 }
 
 =======
+=======
+>>>>>>> 0e1218bc702cdab65f4d3ad81f62baa81bda875e
 #include<bits/stdc++.h>
 using namespace std;
 #define int long long
@@ -97,5 +100,9 @@ int main(){
             }
         }
     }
+<<<<<<< HEAD
+}
+>>>>>>> 0e1218bc702cdab65f4d3ad81f62baa81bda875e
+=======
 }
 >>>>>>> 0e1218bc702cdab65f4d3ad81f62baa81bda875e

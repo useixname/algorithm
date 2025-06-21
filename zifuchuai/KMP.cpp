@@ -12,7 +12,11 @@ int main(){
     cin >> S+1 >> P+1;
     m = strlen(S+1), n = strlen(P+1);
 <<<<<<< HEAD
+<<<<<<< HEAD
     // next
+=======
+    // next数组
+>>>>>>> 0e1218bc702cdab65f4d3ad81f62baa81bda875e
 =======
     // next数组
 >>>>>>> 0e1218bc702cdab65f4d3ad81f62baa81bda875e

@@ -29,8 +29,12 @@ int main(){
     scanf("%d",&a[i].val),a[i].pos=i;
   sort(a+1,a+n+1,cmp);
 <<<<<<< HEAD
+<<<<<<< HEAD
   for(int i=1;i<=n;i++){ //从前面找>a[i].pos的个数
   cout<<a[i].pos<<'\n';
+=======
+  for(int i=1;i<=n;i++){ //从前面找>ai的个数
+>>>>>>> 0e1218bc702cdab65f4d3ad81f62baa81bda875e
 =======
   for(int i=1;i<=n;i++){ //从前面找>ai的个数
 >>>>>>> 0e1218bc702cdab65f4d3ad81f62baa81bda875e
