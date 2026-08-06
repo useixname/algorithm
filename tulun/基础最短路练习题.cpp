@@ -1,20 +1,21 @@
 #include<bits/stdc++.h>
 using namespace std;
+#define int long long
 #define inf 0x7f7f7f7f
 #define PII pair<int,int>
-#define int long long
 const int N=1e5+10;
-int n,m,q,cnt;
+
 struct node{
     int v,w;
 };
-vector<node>e[N];
-int d[N],vis[N];
+vector<node> e[N];
+int vis[N],d[N];
+int n,m,q,cnt=0;
 
 void dijkstra(int s){
     memset(d,inf,sizeof(d));
     memset(vis,0,sizeof(vis));
-    priority_queue<PII>q;
+    priority_queue<PII> q;
     d[s]=0;
     q.push({0,s});
     while(q.size()){
@@ -23,9 +24,9 @@ void dijkstra(int s){
         int u=t.second;
         if(vis[u]) continue;
         vis[u]=1;
-        for(auto eu:e[u]){
-            int v=eu.v,w=eu.w;
-            if(d[v]>=(d[u]^w) || cnt==m){
+        for(auto et:e[u]){
+            int v=et.v,w=et.w;
+            if(d[v]>=d[u]^w||cnt==m){
                 d[v]=d[u]^w;
                 q.push({-d[v],v});
             }
@@ -35,6 +36,7 @@ void dijkstra(int s){
 
 signed main(){
     ios_base::sync_with_stdio(0);
+    cin.tie(0);cout.tie(0);
     cin>>n>>m>>q;
     for(int i=1;i<=m;i++){
         int u,v,w;
@@ -45,9 +47,9 @@ signed main(){
     }
     dijkstra(1);
     while(q--){
-        int s,t;
-        cin>>s>>t;
-        cout<<(d[s]^d[t])<<'\n';
+        int a,b;
+        cin>>a>>b;
+        cout<<(d[a]^d[b])<<'\n';
     }
     return 0;
 }

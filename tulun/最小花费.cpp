@@ -1,73 +1,63 @@
-#include <cstring>
-#include <cstdio>
-#include <vector>
-#include <queue>
+#include <bits/stdc++.h>
 using namespace std;
-int n, m, A, B;
-double dis[2010];
-bool mark[2010];
-struct Node
-{
-    int Num;
-    double dis;
-    bool operator<(const Node &a) const
-    {
-        return a.dis > dis;
-    }
+
+const int N = 2010;
+const double INF = 1e18;
+
+struct Edge {
+    int v, w;
 };
-struct node
-{
-    int Num;
-    double dis;
-};
-vector<node> G[2010];
-inline void Dij()
-{
-    priority_queue<Node> q;
-    Node temp;
-    temp.Num = A;
-    temp.dis = 1;
-    q.push(temp);
-    while (!q.empty())
-    {
-        int u = q.top().Num;
+
+vector<Edge> e[N];
+double d[N];
+bool vis[N];
+int n, m;
+
+void dijkstra(int s) {
+    priority_queue<pair<double, int>, vector<pair<double, int>>, greater<pair<double, int>>> q;
+
+    fill(d, d + N, INF);
+    memset(vis, 0, sizeof(vis));
+
+    d[s] = 100.0;
+    q.push({d[s], s});
+
+    while (!q.empty()) {
+        auto [dist, u] = q.top();
         q.pop();
-        if (mark[u] == 1)
-            continue;
-        mark[u] = 1;
-        for (int i = 0; i < G[u].size(); i++)
-        {
-            int v = G[u][i].Num;
-            double l = G[u][i].dis;
-            if (mark[v] == 0 && dis[v] < dis[u] * l)
-            {
-                dis[v] = dis[u] * l;
-                temp.Num = v;
-                temp.dis = dis[v];
-                q.push(temp);
+
+        if (vis[u]) continue;
+        vis[u] = true;
+
+        for (auto ed : e[u]) {
+            int v = ed.v, w = ed.w;
+            double cost = d[u] / (1.0 - w / 100.0);
+
+            if (d[v] > cost) {
+                d[v] = cost;
+                q.push({d[v], v});
             }
         }
     }
 }
-int main()
-{
-    node temp;
-    scanf("%d%d", &n, &m);
-    memset(dis, -0x3f, sizeof(dis));
-    for (int i = 1; i <= m; i++)
-    {
-        int x, y;
-        double z;
-        scanf("%d%d%lf", &x, &y, &z);
-        temp.Num = y;
-        temp.dis = 1 - z / 100;
-        G[x].push_back(temp);
-        temp.Num = x;
-        G[y].push_back(temp);
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    cin >> n >> m;
+    for (int i = 1; i <= m; i++) {
+        int u, v, w;
+        cin >> u >> v >> w;
+        e[u].push_back({v, w});
+        e[v].push_back({u, w});
     }
-    scanf("%d%d", &A, &B);
-    dis[A] = 1;
-    Dij();
-    printf("%.8lf", 100 / dis[B]);
+
+    int a, b;
+    cin >> a >> b;
+
+    dijkstra(b);  // 从终点反向跑
+    cout << fixed << setprecision(8) << d[a] << '\n';
+
     return 0;
 }

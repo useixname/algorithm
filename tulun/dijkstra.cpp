@@ -14,12 +14,14 @@ void dijkstra(int s){
     d[s]=0;
     for(int i=1;i<=n;i++){
         int u=0;
+        //在没有标记的点中循环找出到源点s距离最小的一个顶点
         for(int j=1;j<=n;j++){
             if(!vis[j]&&d[j]<d[u]){
                 u=j;
             }
         }
         vis[u]=1;
+        //更新源点s到点v的最短路径
         for(auto et:e[u]){
             int v=et.v,w=et.w;
             if(d[v]>w+d[u]){
